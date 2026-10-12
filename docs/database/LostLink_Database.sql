@@ -366,35 +366,3 @@ SELECT * FROM ReturnRecords;
 SELECT * FROM WitnessAlerts;
 GO
 
-
-
-UPDATE LostItems
-SET Description = N'?��� ������, ������ �?����, �������?�� �?�� �?� ������ ���'
-WHERE LostItemId = 1;
-GO
-
-
-
-INSERT INTO Notifications
-(UserId, Message, NotificationType)
-VALUES
-(
-    1,
-    N'��?���� ���� �����������',
-    N'TEST'
-);
-GO
-
-DELETE FROM Notifications
-WHERE NotificationType = N'TEST';
-GO
-
-
-SELECT * FROM Users;
-SELECT * FROM LostItems;
-SELECT * FROM FoundItems;
-SELECT * FROM Matches;
-SELECT * FROM Verifications;
-SELECT * FROM ReturnRecords;
-GO
-
