@@ -1,14 +1,6 @@
 USE LostLink;
 GO
 
-/* =========================================================
-   LOSTLINK �������� ?���
-   ========================================================= */
-
-
-/* =========================================================
-   1. USERS � ��������������
-   ========================================================= */
 
 CREATE TABLE Users (
     UserId INT IDENTITY(1,1) PRIMARY KEY,
@@ -34,10 +26,6 @@ CREATE TABLE Users (
 GO
 
 
-/* =========================================================
-   2. LOSTITEMS � ��?��?�� ������
-   ========================================================= */
-
 CREATE TABLE LostItems (
     LostItemId INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT NOT NULL,
@@ -61,10 +49,6 @@ CREATE TABLE LostItems (
 GO
 
 
-/* =========================================================
-   3. FOUNDITEMS � �����?�� ������
-   ========================================================= */
-
 CREATE TABLE FoundItems (
     FoundItemId INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT NOT NULL,
@@ -85,11 +69,6 @@ CREATE TABLE FoundItems (
         CHECK (Status IN ('FOUND', 'MATCHED', 'RETURNED', 'CLOSED'))
 );
 GO
-
-
-/* =========================================================
-   4. LOCATIONS � �������
-   ========================================================= */
 
 CREATE TABLE Locations (
     LocationId INT IDENTITY(1,1) PRIMARY KEY,
@@ -114,11 +93,6 @@ CREATE TABLE Locations (
 );
 GO
 
-
-/* =========================================================
-   5. PREDICTIONS � PREDICTIVE SEARCH �?������в
-   ========================================================= */
-
 CREATE TABLE Predictions (
     PredictionId INT IDENTITY(1,1) PRIMARY KEY,
     LostItemId INT NOT NULL,
@@ -134,11 +108,6 @@ CREATE TABLE Predictions (
         CHECK (Probability >= 0 AND Probability <= 100)
 );
 GO
-
-
-/* =========================================================
-   6. MATCHES � AI MATCHING
-   ========================================================= */
 
 CREATE TABLE Matches (
     MatchId INT IDENTITY(1,1) PRIMARY KEY,
@@ -164,11 +133,6 @@ CREATE TABLE Matches (
 );
 GO
 
-
-/* =========================================================
-   7. NOTIFICATIONS � ������������
-   ========================================================= */
-
 CREATE TABLE Notifications (
     NotificationId INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT NOT NULL,
@@ -187,11 +151,6 @@ CREATE TABLE Notifications (
         REFERENCES Matches(MatchId)
 );
 GO
-
-
-/* =========================================================
-   8. VERIFICATIONS � SECRET PROOF
-   ========================================================= */
 
 CREATE TABLE Verifications (
     VerificationId INT IDENTITY(1,1) PRIMARY KEY,
@@ -214,11 +173,6 @@ CREATE TABLE Verifications (
 );
 GO
 
-
-/* =========================================================
-   9. RETURNRECORDS � ����� ?������
-   ========================================================= */
-
 CREATE TABLE ReturnRecords (
     ReturnId INT IDENTITY(1,1) PRIMARY KEY,
     VerificationId INT NOT NULL,
@@ -235,10 +189,6 @@ CREATE TABLE ReturnRecords (
 );
 GO
 
-
-/* =========================================================
-   10. DIGITAL WITNESS �������������
-   ========================================================= */
 
 CREATE TABLE WitnessAlerts (
     AlertId INT IDENTITY(1,1) PRIMARY KEY,
@@ -259,9 +209,6 @@ CREATE TABLE WitnessAlerts (
 GO
 
 
-/* =========================================================
-   ���� ?ز� �������� ��ò�� � INSERT
-   ========================================================= */
 
 INSERT INTO Users
 (FullName, Email, PasswordHash, Phone, Role)
@@ -283,8 +230,6 @@ VALUES
 GO
 
 
-/* ��?��?�� ��� */
-
 INSERT INTO LostItems
 (UserId, Name, Category, Color, Description,
  LostDate, SecretProof)
@@ -301,8 +246,6 @@ VALUES
 GO
 
 
-/* �����?�� ��� */
-
 INSERT INTO FoundItems
 (UserId, Name, Category, Color, Description, FoundDate)
 VALUES
@@ -316,8 +259,6 @@ VALUES
 );
 GO
 
-
-/* ��?��?�� ���� */
 
 INSERT INTO Locations
 (LostItemId, LocationName, Latitude, Longitude,
@@ -334,7 +275,6 @@ VALUES
 GO
 
 
-/* �����?�� ���� */
 
 INSERT INTO Locations
 (FoundItemId, LocationName, Latitude, Longitude,
@@ -351,8 +291,6 @@ VALUES
 GO
 
 
-/* Predictive Search �?����� */
-
 INSERT INTO Predictions
 (LostItemId, LocationName, Probability)
 VALUES
@@ -362,16 +300,12 @@ VALUES
 GO
 
 
-/* AI Matching �?����� */
-
 INSERT INTO Matches
 (LostItemId, FoundItemId, SimilarityScore, Status)
 VALUES
 (1, 1, 87.50, N'MATCHED');
 GO
 
-
-/* ��������� */
 
 INSERT INTO Notifications
 (UserId, MatchId, Message, NotificationType)
@@ -384,8 +318,6 @@ VALUES
 );
 GO
 
-
-/* Secret Proof */
 
 INSERT INTO Verifications
 (MatchId, UserId, Answer, Status, VerifiedAt)
@@ -400,8 +332,6 @@ VALUES
 GO
 
 
-/* QR-��� */
-
 INSERT INTO ReturnRecords
 (VerificationId, QRCode, Status)
 VALUES
@@ -413,8 +343,6 @@ VALUES
 GO
 
 
-/* Digital Witness ����������� */
-
 INSERT INTO WitnessAlerts
 (LostItemId, UserId, Message)
 VALUES
@@ -425,10 +353,6 @@ VALUES
 );
 GO
 
-
-/* =========================================================
-   SELECT � ��������Ĳ �������
-   ========================================================= */
 
 SELECT * FROM Users;
 SELECT * FROM LostItems;
@@ -443,9 +367,6 @@ SELECT * FROM WitnessAlerts;
 GO
 
 
-/* =========================================================
-   UPDATE ������
-   ========================================================= */
 
 UPDATE LostItems
 SET Description = N'?��� ������, ������ �?����, �������?�� �?�� �?� ������ ���'
@@ -453,10 +374,6 @@ WHERE LostItemId = 1;
 GO
 
 
-/* =========================================================
-   DELETE ������
-   ��?���� ��������� ?����, ���� ?������
-   ========================================================= */
 
 INSERT INTO Notifications
 (UserId, Message, NotificationType)
@@ -472,10 +389,6 @@ DELETE FROM Notifications
 WHERE NotificationType = N'TEST';
 GO
 
-
-/* =========================================================
-   ��??� �?�������Ĳ �?��
-   ========================================================= */
 
 SELECT * FROM Users;
 SELECT * FROM LostItems;
