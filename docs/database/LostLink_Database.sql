@@ -398,3 +398,4 @@ SELECT * FROM Verifications;
 SELECT * FROM ReturnRecords;
 GO
 
+пкпк
