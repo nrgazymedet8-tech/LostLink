@@ -2,12 +2,12 @@ USE LostLink;
 GO
 
 /* =========================================================
-   LOSTLINK ÄÅÐÅÊÒÅÐ ?ÎÐÛ
+   LOSTLINK �������� ?���
    ========================================================= */
 
 
 /* =========================================================
-   1. USERS — ÏÀÉÄÀËÀÍÓØÛËÀÐ
+   1. USERS � ��������������
    ========================================================= */
 
 CREATE TABLE Users (
@@ -35,7 +35,7 @@ GO
 
 
 /* =========================================================
-   2. LOSTITEMS — ÆÎ?ÀË?ÀÍ ÇÀÒÒÀÐ
+   2. LOSTITEMS � ��?��?�� ������
    ========================================================= */
 
 CREATE TABLE LostItems (
@@ -62,7 +62,7 @@ GO
 
 
 /* =========================================================
-   3. FOUNDITEMS — ÒÀÁÛË?ÀÍ ÇÀÒÒÀÐ
+   3. FOUNDITEMS � �����?�� ������
    ========================================================= */
 
 CREATE TABLE FoundItems (
@@ -88,7 +88,7 @@ GO
 
 
 /* =========================================================
-   4. LOCATIONS — ÎÐÛÍÄÀÐ
+   4. LOCATIONS � �������
    ========================================================= */
 
 CREATE TABLE Locations (
@@ -116,7 +116,7 @@ GO
 
 
 /* =========================================================
-   5. PREDICTIONS — PREDICTIVE SEARCH Í?ÒÈÆÅËÅÐ²
+   5. PREDICTIONS � PREDICTIVE SEARCH �?������в
    ========================================================= */
 
 CREATE TABLE Predictions (
@@ -137,7 +137,7 @@ GO
 
 
 /* =========================================================
-   6. MATCHES — AI MATCHING
+   6. MATCHES � AI MATCHING
    ========================================================= */
 
 CREATE TABLE Matches (
@@ -166,7 +166,7 @@ GO
 
 
 /* =========================================================
-   7. NOTIFICATIONS — ÕÀÁÀÐËÀÌÀËÀÐ
+   7. NOTIFICATIONS � ������������
    ========================================================= */
 
 CREATE TABLE Notifications (
@@ -190,7 +190,7 @@ GO
 
 
 /* =========================================================
-   8. VERIFICATIONS — SECRET PROOF
+   8. VERIFICATIONS � SECRET PROOF
    ========================================================= */
 
 CREATE TABLE Verifications (
@@ -216,7 +216,7 @@ GO
 
 
 /* =========================================================
-   9. RETURNRECORDS — ÇÀÒÒÛ ?ÀÉÒÀÐÓ
+   9. RETURNRECORDS � ����� ?������
    ========================================================= */
 
 CREATE TABLE ReturnRecords (
@@ -237,7 +237,7 @@ GO
 
 
 /* =========================================================
-   10. DIGITAL WITNESS ÕÀÁÀÐËÀÌÀËÀÐÛ
+   10. DIGITAL WITNESS �������������
    ========================================================= */
 
 CREATE TABLE WitnessAlerts (
@@ -260,30 +260,30 @@ GO
 
 
 /* =========================================================
-   ÒÅÑÒ ?Ø²Í ÄÅÐÅÊÒÅÐ ÅÍÃ²ÇÓ — INSERT
+   ���� ?ز� �������� ��ò�� � INSERT
    ========================================================= */
 
 INSERT INTO Users
 (FullName, Email, PasswordHash, Phone, Role)
 VALUES
-(N'Ìåäåò Í?ð?àçû', N'medet@lostlink.kz', N'password123',
+(N'����� �?�?���', N'medet@lostlink.kz', N'password123',
  N'+77070000001', N'OWNER'),
 
-(N'Àÿí Ñåð³ê', N'ayan@lostlink.kz', N'password123',
+(N'��� ����', N'ayan@lostlink.kz', N'password123',
  N'+77070000002', N'FINDER'),
 
-(N'Äàíèÿð Àñ?àð', N'daniyar@lostlink.kz', N'password123',
+(N'������ ��?��', N'daniyar@lostlink.kz', N'password123',
  N'+77070000003', N'WITNESS'),
 
-(N'Àéáåê Ìàðàò', N'aibek@lostlink.kz', N'password123',
+(N'����� �����', N'aibek@lostlink.kz', N'password123',
  N'+77070000004', N'MODERATOR'),
 
-(N'Àäìèíèñòðàòîð', N'admin@lostlink.kz', N'admin123',
+(N'�������������', N'admin@lostlink.kz', N'admin123',
  N'+77070000005', N'ADMIN');
 GO
 
 
-/* Æî?àë?àí çàò */
+/* ��?��?�� ��� */
 
 INSERT INTO LostItems
 (UserId, Name, Category, Color, Description,
@@ -291,33 +291,33 @@ INSERT INTO LostItems
 VALUES
 (
     1,
-    N'?àðà ðþêçàê',
-    N'Ñ?ìêå',
-    N'?àðà',
-    N'²ø³íäå ä?ïòåð æ?íå çàðÿäòà?ûø áàð',
+    N'?��� ������',
+    N'�?���',
+    N'?���',
+    N'������ �?���� �?�� �������?�� ���',
     GETDATE(),
-    N'²øê³ ?àëòàñûíäà ê?ê áðåëîê áàð'
+    N'��� ?��������� �?� ������ ���'
 );
 GO
 
 
-/* Òàáûë?àí çàò */
+/* �����?�� ��� */
 
 INSERT INTO FoundItems
 (UserId, Name, Category, Color, Description, FoundDate)
 VALUES
 (
     2,
-    N'?àðà ðþêçàê',
-    N'Ñ?ìêå',
-    N'?àðà',
-    N'?àðà ò?ñò³ ðþêçàê òàáûëäû',
+    N'?��� ������',
+    N'�?���',
+    N'?���',
+    N'?��� �?�� ������ �������',
     GETDATE()
 );
 GO
 
 
-/* Æî?àë?àí îðûí */
+/* ��?��?�� ���� */
 
 INSERT INTO Locations
 (LostItemId, LocationName, Latitude, Longitude,
@@ -325,7 +325,7 @@ INSERT INTO Locations
 VALUES
 (
     1,
-    N'?àç?Ó àóìà?û',
+    N'?��?� ����?�',
     43.224100,
     76.921600,
     GETDATE(),
@@ -334,7 +334,7 @@ VALUES
 GO
 
 
-/* Òàáûë?àí îðûí */
+/* �����?�� ���� */
 
 INSERT INTO Locations
 (FoundItemId, LocationName, Latitude, Longitude,
@@ -342,7 +342,7 @@ INSERT INTO Locations
 VALUES
 (
     1,
-    N'?àç?Ó ê³òàïõàíàñû',
+    N'?��?� ����������',
     43.225000,
     76.922000,
     GETDATE(),
@@ -351,18 +351,18 @@ VALUES
 GO
 
 
-/* Predictive Search í?òèæåñ³ */
+/* Predictive Search �?����� */
 
 INSERT INTO Predictions
 (LostItemId, LocationName, Probability)
 VALUES
-(1, N'?àç?Ó ê³òàïõàíàñû', 85.00),
-(1, N'?àç?Ó áàñ ?èìàðàòû', 70.00),
-(1, N'Ñòóäåíòòåð ?àëàøû?û', 55.00);
+(1, N'?��?� ����������', 85.00),
+(1, N'?��?� ��� ?�������', 70.00),
+(1, N'���������� ?�����?�', 55.00);
 GO
 
 
-/* AI Matching í?òèæåñ³ */
+/* AI Matching �?����� */
 
 INSERT INTO Matches
 (LostItemId, FoundItemId, SimilarityScore, Status)
@@ -371,7 +371,7 @@ VALUES
 GO
 
 
-/* Õàáàðëàìà */
+/* ��������� */
 
 INSERT INTO Notifications
 (UserId, MatchId, Message, NotificationType)
@@ -379,7 +379,7 @@ VALUES
 (
     1,
     1,
-    N'Ñ³çä³? æî?àë?àí çàòû?ûç?à ??ñàñ çàò òàáûëäû.',
+    N'ѳ��? ��?��?�� ����?��?� ??��� ��� �������.',
     N'MATCH_FOUND'
 );
 GO
@@ -393,14 +393,14 @@ VALUES
 (
     1,
     1,
-    N'²øê³ ?àëòàñûíäà ê?ê áðåëîê áàð',
+    N'��� ?��������� �?� ������ ���',
     N'VERIFIED',
     GETDATE()
 );
 GO
 
 
-/* QR-êîä */
+/* QR-��� */
 
 INSERT INTO ReturnRecords
 (VerificationId, QRCode, Status)
@@ -413,7 +413,7 @@ VALUES
 GO
 
 
-/* Digital Witness õàáàðëàìàñû */
+/* Digital Witness ����������� */
 
 INSERT INTO WitnessAlerts
 (LostItemId, UserId, Message)
@@ -421,13 +421,13 @@ VALUES
 (
     1,
     3,
-    N'Îñû àéìà?òà ?àðà ðþêçàê æî?àë?àí. Ê?ðãåí áîëñà?ûç, æ?éåäå áåëã³ëå?³ç.'
+    N'��� ����?�� ?��� ������ ��?��?��. �?���� �����?��, �?���� ������?��.'
 );
 GO
 
 
 /* =========================================================
-   SELECT — ÊÅÑÒÅËÅÐÄ² ÒÅÊÑÅÐÓ
+   SELECT � ��������Ĳ �������
    ========================================================= */
 
 SELECT * FROM Users;
@@ -444,18 +444,18 @@ GO
 
 
 /* =========================================================
-   UPDATE ÌÛÑÀËÛ
+   UPDATE ������
    ========================================================= */
 
 UPDATE LostItems
-SET Description = N'?àðà ðþêçàê, ³ø³íäå ä?ïòåð, çàðÿäòà?ûø æ?íå ê?ê áðåëîê áàð'
+SET Description = N'?��� ������, ������ �?����, �������?�� �?�� �?� ������ ���'
 WHERE LostItemId = 1;
 GO
 
 
 /* =========================================================
-   DELETE ÌÛÑÀËÛ
-   Óà?ûòøà õàáàðëàìà ?îñûï, êåé³í ?ø³ðåì³ç
+   DELETE ������
+   ��?���� ��������� ?����, ���� ?������
    ========================================================= */
 
 INSERT INTO Notifications
@@ -463,7 +463,7 @@ INSERT INTO Notifications
 VALUES
 (
     1,
-    N'Óà?ûòøà òåñò õàáàðëàìàñû',
+    N'��?���� ���� �����������',
     N'TEST'
 );
 GO
@@ -474,7 +474,7 @@ GO
 
 
 /* =========================================================
-   ÑÎ??Û Í?ÒÈÆÅËÅÐÄ² Ê?ÐÓ
+   ��??� �?�������Ĳ �?��
    ========================================================= */
 
 SELECT * FROM Users;
@@ -484,4 +484,3 @@ SELECT * FROM Matches;
 SELECT * FROM Verifications;
 SELECT * FROM ReturnRecords;
 GO
-
